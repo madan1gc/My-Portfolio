@@ -11,8 +11,12 @@ interface ButtonProps {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
+  // Darker gradient endpoints than accent.from/accent.to so white button
+  // text clears AA (4.5:1) across the whole gradient — see contrast math in
+  // the Phase 1 fix report. Shadows keep the brand accent colors since
+  // shadow contrast isn't an AA text requirement.
   primary:
-    'bg-gradient-to-r from-accent-from to-accent-to text-white shadow-lg shadow-accent-from/20 hover:shadow-accent-from/40',
+    'bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white shadow-lg shadow-accent-from/20 hover:shadow-accent-from/40',
   secondary: 'border border-border text-foreground hover:border-accent-from',
   ghost: 'text-muted hover:text-foreground',
 };

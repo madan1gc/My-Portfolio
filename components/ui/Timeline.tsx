@@ -23,7 +23,7 @@ export function Timeline({ items }: TimelineProps) {
           <ul className="space-y-2">
             {item.description.map((line) => (
               <li key={line} className="flex gap-2 text-sm text-muted">
-                <span className="text-accent-from">—</span>
+                <span className="text-accent-text">—</span>
                 <span>{line}</span>
               </li>
             ))}

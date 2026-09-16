@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 interface FadeInProps {
@@ -9,6 +9,15 @@ interface FadeInProps {
 }
 
 export function FadeIn({ children, delay = 0 }: FadeInProps) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    // Skip the fade/slide entirely: render at full opacity immediately.
+    // `initial={false}` prevents the SSR/first-paint output from being
+    // stuck at the animated `initial` state (opacity: 0).
+    return <motion.div initial={false}>{children}</motion.div>;
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}

@@ -13,6 +13,11 @@ const config: Config = {
         accent: {
           from: '#6366F1',
           to: '#A855F7',
+          // AA-compliant (~6.62:1 on #0A0A0F) alternative to accent.from for
+          // small text (e.g. text-xs uppercase eyebrows), which fails AA at
+          // accent.from's ~4.42:1. Do not use for large/gradient text or
+          // decorative borders/glows — those keep accent.from/accent.to.
+          text: '#818CF8',
         },
       },
       fontFamily: {
