@@ -1,4 +1,6 @@
 import '@testing-library/jest-dom/vitest';
+import { cleanup } from '@testing-library/react';
+import { afterEach } from 'vitest';
 
 class IntersectionObserverMock {
   observe = () => {};
@@ -24,3 +26,8 @@ if (!window.matchMedia) {
       dispatchEvent: () => false,
     }) as unknown as MediaQueryList;
 }
+
+// Ensure React Testing Library cleanup between tests
+afterEach(() => {
+  cleanup();
+});
