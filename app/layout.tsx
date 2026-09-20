@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Madan G.C — Frontend Developer & WordPress Product Builder',
   description:
     'I build fast, scalable WordPress experiences, custom plugins, and modern frontend interfaces using React, JavaScript, Elementor, Bricks, and WordPress.',
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
