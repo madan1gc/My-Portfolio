@@ -14,11 +14,9 @@ here should be treated as final copy.
 - [ ] Confirm `/images/me.jpg` is an appropriate professional headshot for the
       Hero photo — the original site's alt text called it "Mountain
       landscape," so verify it's actually a headshot before launch.
-- [ ] The Home page's nav (`components/layout/Nav.tsx`) links to
-      `/open-source`, `/community`, and `/blog`, none of which exist yet
-      (they're built in Phases 3-4). `/work` now exists as of Phase 2. Either
-      add stub "Coming soon" pages for the remaining three routes, or do not
-      deploy the site publicly, until those routes exist.
+- [ ] The Home page's nav (`components/layout/Nav.tsx`) links to `/blog`,
+      which doesn't exist yet (built in Phase 4). `/work`, `/open-source`,
+      and `/community` now exist as of Phases 2-3.
 
 ## Content quality
 
@@ -31,8 +29,8 @@ complete" and "actually persuasive".
 - [ ] Replace all three entries in `data/testimonials.ts` with real
       client/teammate/community quotes.
 - [ ] Confirm WordCamp Nepal / WordCamp Asia attendance before adding them to
-      `data/trust.ts` — only Codewing Solutions, WordPress.org, and WordCamp
-      Kathmandu are listed today because they're confirmed.
+      `data/trust.ts` or `data/wordcamps.ts` — only WordCamp Kathmandu 2022
+      is listed today because it's confirmed.
 - [ ] The Hero's status badge text "Available for freelance & full-time
       roles" (`components/sections/Hero.tsx`) should be confirmed as still
       accurate before launch — it's an availability claim, not a
@@ -53,9 +51,16 @@ complete" and "actually persuasive".
       `getHeroStats()`) now matches the 7 real case-study pages at `/work`,
       but those pages are still placeholder content — re-confirm the stat
       (or drop the "+") once the 7 case studies hold real, verified detail.
+- [ ] `data/openSource.ts` and `/open-source` show only the real
+      WordPress.org profile link and the one plugin-shaped project already in
+      `data/projects.ts` — no contribution timeline, download counts, or
+      release history, since none of that is confirmed yet. Expand once real
+      WordPress.org contribution data is available.
+- [ ] `data/wordcamps.ts` and `/community` show only the one confirmed
+      appearance (WordCamp Kathmandu 2022, Organizer). Add further entries
+      only once additional WordCamp attendance is confirmed — do not infer
+      or estimate.
 
 ## Later phases (tracked here now, addressed when that phase is built)
 
-- [ ] Phase 3 — Open Source & Community: real WordPress.org contribution
-      history, plugin/theme downloads, WordCamp roles/years/photos.
 - [ ] Phase 4 — Blog: the 5 recommended articles need to actually be written.

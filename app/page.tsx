@@ -1,3 +1,4 @@
+import { CommunityStrip } from '@/components/sections/CommunityStrip';
 import { Contact } from '@/components/sections/Contact';
 import { Experience } from '@/components/sections/Experience';
 import { FeaturedProjects } from '@/components/sections/FeaturedProjects';
@@ -32,7 +33,7 @@ export default function HomePage() {
       <FeaturedProjects />
       <Skills />
       <Experience />
-      {/* Phase 3 will insert an Open Source/Community highlight strip here. */}
+      <CommunityStrip />
       <Testimonials />
       {/* Phase 4 will insert a "Latest from the blog" preview here. */}
       <Contact />

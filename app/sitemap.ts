@@ -12,5 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/work/${project.slug}`,
       lastModified,
     })),
+    { url: `${baseUrl}/open-source`, lastModified },
+    { url: `${baseUrl}/community`, lastModified },
   ];
 }

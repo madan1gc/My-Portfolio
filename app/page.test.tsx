@@ -35,6 +35,10 @@ describe('HomePage', () => {
     expect(screen.getByRole('heading', { name: 'Frontend Developer' })).toBeInTheDocument();
     expect(screen.getByText('Codewing Solutions · Kathmandu, Nepal')).toBeInTheDocument();
 
+    // Community strip
+    expect(screen.getByRole('heading', { name: 'Open Source' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Community' })).toBeInTheDocument();
+
     // Testimonials
     expect(screen.getByText('Client Name')).toBeInTheDocument();
 
