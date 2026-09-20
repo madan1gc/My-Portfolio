@@ -5,6 +5,9 @@ import { ImageResponse } from 'next/og';
 export const size = { width: 32, height: 32 };
 export const contentType = 'image/png';
 
+// next/og's Windows font-loading bug is patched via
+// patches/next+14.2.35.patch — see CONTENT-TODO.md for details before
+// touching this file or upgrading Next.js.
 const geistBold = fs.readFileSync(
   path.join(process.cwd(), 'node_modules', 'geist', 'dist', 'fonts', 'geist-sans', 'Geist-Bold.ttf'),
 );

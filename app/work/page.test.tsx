@@ -6,6 +6,7 @@ describe('WorkPage', () => {
   it('renders a heading and a card for all 7 projects', () => {
     render(<WorkPage />);
     expect(screen.getByRole('heading', { name: 'Work', level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
 
     const titles = [
       'MGCora Unused Media Finder',

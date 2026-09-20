@@ -62,4 +62,13 @@ describe('Nav', () => {
     await user.keyboard('{Escape}');
     expect(document.getElementById('mobile-nav')).toBeNull();
   });
+
+  it('returns focus to the toggle button when Escape closes the mobile menu', async () => {
+    const user = userEvent.setup();
+    render(<Nav />);
+    const toggle = screen.getByRole('button', { name: 'Toggle navigation menu' });
+    await user.click(toggle);
+    await user.keyboard('{Escape}');
+    expect(toggle).toHaveFocus();
+  });
 });

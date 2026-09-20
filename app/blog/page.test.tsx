@@ -6,6 +6,7 @@ describe('BlogPage', () => {
   it('renders a heading and a card for all 5 posts', () => {
     render(<BlogPage />);
     expect(screen.getByRole('heading', { name: 'Blog', level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
 
     const titles = [
       'Lessons from Building WordPress Plugins',

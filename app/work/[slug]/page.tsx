@@ -97,7 +97,7 @@ export default function WorkCaseStudyPage({ params }: WorkCaseStudyPageProps) {
 
       <div className="mx-auto max-w-6xl px-6 pb-24">
         <Button href="/work" variant="ghost">
-          ← Back to all projects
+          <span aria-hidden="true">←</span> Back to all projects
         </Button>
       </div>
     </>

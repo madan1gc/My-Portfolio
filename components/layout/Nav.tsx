@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { profile } from '@/data/profile';
 
@@ -14,6 +14,7 @@ const navLinks = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!open) {
@@ -23,6 +24,7 @@ export function Nav() {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         setOpen(false);
+        toggleButtonRef.current?.focus();
       }
     }
 
@@ -64,6 +66,7 @@ export function Nav() {
           </div>
 
           <button
+            ref={toggleButtonRef}
             type="button"
             className="flex flex-col gap-1.5 rounded md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-from focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-expanded={open}

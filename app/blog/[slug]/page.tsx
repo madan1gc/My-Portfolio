@@ -62,7 +62,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       </div>
       <div className="mt-12">
         <Button href="/blog" variant="ghost">
-          ← Back to blog
+          <span aria-hidden="true">←</span> Back to blog
         </Button>
       </div>
     </article>

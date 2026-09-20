@@ -12,9 +12,7 @@ here should be treated as final copy.
       button both 404.
 - [ ] Replace the placeholder domain `https://madangc.example` with the real
       production domain in `app/layout.tsx` (`metadataBase`), `app/sitemap.ts`,
-      `app/robots.ts`, and the `PersonJsonLd`/`CreativeWorkJsonLd`/
-      `BlogPostingJsonLd` blocks across `app/page.tsx`,
-      `app/work/[slug]/page.tsx`, and `app/blog/[slug]/page.tsx`.
+      `app/robots.ts`, and the `PersonJsonLd` block in `app/page.tsx`.
 - [ ] Confirm `/images/me.jpg` is an appropriate professional headshot for the
       Hero photo — the original site's alt text called it "Mountain
       landscape," so verify it's actually a headshot before launch.
@@ -69,6 +67,17 @@ complete" and "actually persuasive".
       are actually published, in the order they go live, and add
       `datePublished` to each post's `BlogPosting` JSON-LD
       (`app/blog/[slug]/page.tsx`) at the same time.
+- [ ] `CreativeWorkJsonLd` (`app/work/[slug]/page.tsx`) and `BlogPostingJsonLd`
+      (`app/blog/[slug]/page.tsx`) don't include a `url`/`mainEntityOfPage`
+      field yet — add one once the real production domain exists, so search
+      engines can resolve the structured data back to the actual page.
+- [ ] No canonical URLs (`<link rel="canonical">` / `alternates.canonical`)
+      exist anywhere on the site yet. Add `alternates: { canonical: ... }`
+      to `app/layout.tsx` and to each route's `generateMetadata`/`metadata`
+      export once the real domain exists.
+- [ ] The site uses Next's default 404 page (no custom `app/not-found.tsx`)
+      — it's functional but off-brand (doesn't match the site's dark theme
+      and typography). Worth a custom one in a future pass.
 
 ## Known technical debt (non-blocking, low priority)
 

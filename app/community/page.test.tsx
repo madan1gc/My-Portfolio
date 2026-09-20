@@ -6,6 +6,7 @@ describe('CommunityPage', () => {
   it('renders the WordCamp Kathmandu 2022 entry and nothing else', () => {
     render(<CommunityPage />);
     expect(screen.getByRole('heading', { name: 'Community', level: 1 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'WordCamp Kathmandu' })).toBeInTheDocument();
     expect(screen.getByText('Organizer')).toBeInTheDocument();
     expect(screen.getByText('2022')).toBeInTheDocument();
