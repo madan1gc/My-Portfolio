@@ -8,9 +8,13 @@ describe('CommunityStrip', () => {
     expect(screen.getByRole('heading', { name: 'Open Source' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Community' })).toBeInTheDocument();
 
-    const links = screen.getAllByRole('link', { name: /Learn more/ });
-    expect(links).toHaveLength(2);
-    expect(links[0]).toHaveAttribute('href', '/open-source');
-    expect(links[1]).toHaveAttribute('href', '/community');
+    expect(screen.getByRole('link', { name: 'Learn more about Open Source' })).toHaveAttribute(
+      'href',
+      '/open-source',
+    );
+    expect(screen.getByRole('link', { name: 'Learn more about Community' })).toHaveAttribute(
+      'href',
+      '/community',
+    );
   });
 });

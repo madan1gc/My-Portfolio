@@ -11,5 +11,9 @@ describe('OpenSourcePage', () => {
       'https://profiles.wordpress.org/madan1gc/',
     );
     expect(screen.getByRole('heading', { name: 'MGCora Unused Media Finder' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /^View case study:/ })).toHaveAttribute(
+      'href',
+      '/work/mgcora-unused-media-finder',
+    );
   });
 });

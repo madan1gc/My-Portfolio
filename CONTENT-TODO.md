@@ -56,6 +56,10 @@ complete" and "actually persuasive".
       `data/projects.ts` — no contribution timeline, download counts, or
       release history, since none of that is confirmed yet. Expand once real
       WordPress.org contribution data is available.
+- [ ] `/open-source`'s description of MGCora Unused Media Finder should be
+      upgraded once the plugin is actually published — `data/profile.ts`'s
+      "Plugin Author" hero stat still says "In progress", so avoid language
+      that implies the plugin is already live or established.
 - [ ] `data/wordcamps.ts` and `/community` show only the one confirmed
       appearance (WordCamp Kathmandu 2022, Organizer). Add further entries
       only once additional WordCamp attendance is confirmed — do not infer
