@@ -18,7 +18,7 @@ export function FeaturedProjects() {
           href="/work"
           className="rounded text-sm font-medium text-accent-text hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-from focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
-          View all projects →
+          View all projects <span aria-hidden="true">→</span>
         </Link>
       </div>
     </Section>
