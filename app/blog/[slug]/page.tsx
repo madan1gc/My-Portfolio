@@ -34,8 +34,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       <h1 className="mb-4 text-4xl font-semibold text-foreground sm:text-5xl">{post.title}</h1>
       <p className="mb-8 max-w-prose text-lg text-muted">{post.dek}</p>
       <div className="space-y-4">
-        {post.body.map((paragraph) => (
-          <p key={paragraph} className="text-muted">
+        {post.body.map((paragraph, index) => (
+          <p key={`${post.slug}-${index}`} className="text-muted">
             {paragraph}
           </p>
         ))}
