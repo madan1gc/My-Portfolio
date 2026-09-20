@@ -14,9 +14,6 @@ here should be treated as final copy.
 - [ ] Confirm `/images/me.jpg` is an appropriate professional headshot for the
       Hero photo — the original site's alt text called it "Mountain
       landscape," so verify it's actually a headshot before launch.
-- [ ] The Home page's nav (`components/layout/Nav.tsx`) links to `/blog`,
-      which doesn't exist yet (built in Phase 4). `/work`, `/open-source`,
-      and `/community` now exist as of Phases 2-3.
 
 ## Content quality
 
@@ -64,7 +61,13 @@ complete" and "actually persuasive".
       appearance (WordCamp Kathmandu 2022, Organizer). Add further entries
       only once additional WordCamp attendance is confirmed — do not infer
       or estimate.
+- [ ] All 5 posts in `data/blogPosts.ts` (`/blog` and `/blog/[slug]`) have
+      short, generic placeholder bodies rather than finished articles.
+      Replace each with a real, complete write-up before presenting them as
+      genuine posts. No publish dates exist yet either — add them once posts
+      are actually published, in the order they go live.
 
 ## Later phases (tracked here now, addressed when that phase is built)
 
-- [ ] Phase 4 — Blog: the 5 recommended articles need to actually be written.
+- [ ] Phase 5 — Polish: SEO/schema audit, Lighthouse/performance pass,
+      accessibility pass, final QA, and finalizing this checklist.

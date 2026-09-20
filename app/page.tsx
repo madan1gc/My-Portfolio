@@ -1,3 +1,4 @@
+import { BlogPreview } from '@/components/sections/BlogPreview';
 import { CommunityStrip } from '@/components/sections/CommunityStrip';
 import { Contact } from '@/components/sections/Contact';
 import { Experience } from '@/components/sections/Experience';
@@ -35,7 +36,7 @@ export default function HomePage() {
       <Experience />
       <CommunityStrip />
       <Testimonials />
-      {/* Phase 4 will insert a "Latest from the blog" preview here. */}
+      <BlogPreview />
       <Contact />
     </>
   );

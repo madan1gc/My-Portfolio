@@ -42,6 +42,11 @@ describe('HomePage', () => {
     // Testimonials
     expect(screen.getByText('Client Name')).toBeInTheDocument();
 
+    // Blog preview
+    expect(
+      screen.getByRole('heading', { name: 'Lessons from Building WordPress Plugins' }),
+    ).toBeInTheDocument();
+
     // Contact
     expect(
       screen.getByRole('heading', { name: /Let's build something meaningful together/ }),

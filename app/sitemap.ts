@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { blogPosts } from '@/data/blogPosts';
 import { projects } from '@/data/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,5 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${baseUrl}/open-source`, lastModified },
     { url: `${baseUrl}/community`, lastModified },
+    { url: `${baseUrl}/blog`, lastModified },
+    ...blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified,
+    })),
   ];
 }
