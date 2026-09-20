@@ -19,9 +19,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
       <Link
         href={`/work/${project.slug}`}
+        aria-label={`View case study: ${project.title}`}
         className="rounded text-sm font-medium text-accent-text hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-from focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
-        View case study →
+        View case study <span aria-hidden="true">→</span>
       </Link>
     </Card>
   );

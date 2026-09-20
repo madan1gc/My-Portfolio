@@ -1,6 +1,16 @@
 import type { MetadataRoute } from 'next';
+import { projects } from '@/data/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://madangc.example';
-  return [{ url: baseUrl, lastModified: new Date() }];
+  const lastModified = new Date();
+
+  return [
+    { url: baseUrl, lastModified },
+    { url: `${baseUrl}/work`, lastModified },
+    ...projects.map((project) => ({
+      url: `${baseUrl}/work/${project.slug}`,
+      lastModified,
+    })),
+  ];
 }

@@ -49,6 +49,10 @@ complete" and "actually persuasive".
       (`mgcora-unused-media-finder`, `trailvista-theme`, `codewing-website`)
       are an editorial placeholder choice too — revisit once real results
       exist.
+- [ ] The hero stat "Major Projects: 7+" (`data/profile.ts` →
+      `getHeroStats()`) now matches the 7 real case-study pages at `/work`,
+      but those pages are still placeholder content — re-confirm the stat
+      (or drop the "+") once the 7 case studies hold real, verified detail.
 
 ## Later phases (tracked here now, addressed when that phase is built)
 

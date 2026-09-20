@@ -42,7 +42,7 @@ export function Nav() {
           <Button href={profile.resumeUrl} variant="ghost" external>
             Résumé
           </Button>
-          <Button href="#contact" variant="primary">
+          <Button href="/#contact" variant="primary">
             Let&apos;s talk
           </Button>
         </div>
@@ -75,7 +75,7 @@ export function Nav() {
             </li>
           ))}
           <li>
-            <Button href="#contact" variant="primary">
+            <Button href="/#contact" variant="primary">
               Let&apos;s talk
             </Button>
           </li>

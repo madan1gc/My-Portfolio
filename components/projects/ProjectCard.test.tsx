@@ -24,7 +24,7 @@ describe('ProjectCard', () => {
       screen.getByText('A custom WordPress theme built for outdoor/adventure travel brands.'),
     ).toBeInTheDocument();
     expect(screen.getByText('Gutenberg')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /View case study/ })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'View case study: Trailvista Theme' })).toHaveAttribute(
       'href',
       '/work/trailvista-theme',
     );

@@ -12,6 +12,22 @@ describe('Nav', () => {
     expect(screen.getByRole('link', { name: 'Blog' })).toHaveAttribute('href', '/blog');
   });
 
+  it('links "Let\'s talk" (desktop and mobile) to the home page contact anchor so it works from any route', async () => {
+    const user = userEvent.setup();
+    render(<Nav />);
+
+    // Desktop button is always in the DOM.
+    expect(screen.getByRole('link', { name: "Let's talk" })).toHaveAttribute('href', '/#contact');
+
+    // Mobile button only renders once the menu is opened.
+    await user.click(screen.getByRole('button', { name: 'Toggle navigation menu' }));
+    const talkLinks = screen.getAllByRole('link', { name: "Let's talk" });
+    expect(talkLinks).toHaveLength(2);
+    talkLinks.forEach((link) => {
+      expect(link).toHaveAttribute('href', '/#contact');
+    });
+  });
+
   it('toggles the mobile menu open and closed', async () => {
     const user = userEvent.setup();
     render(<Nav />);

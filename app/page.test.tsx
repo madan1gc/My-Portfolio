@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import HomePage from './page';
 
@@ -26,8 +26,10 @@ describe('HomePage', () => {
     expect(screen.getByRole('heading', { name: 'Trailvista Theme' })).toBeInTheDocument();
 
     // Skills
-    expect(screen.getByRole('heading', { name: 'Frontend' })).toBeInTheDocument();
-    expect(screen.getByText('React')).toBeInTheDocument();
+    const skillsHeading = screen.getByRole('heading', { name: 'Frontend' });
+    const skillsSection = skillsHeading.closest('section');
+    expect(skillsSection).not.toBeNull();
+    expect(within(skillsSection as HTMLElement).getByText('React')).toBeInTheDocument();
 
     // Experience
     expect(screen.getByRole('heading', { name: 'Frontend Developer' })).toBeInTheDocument();

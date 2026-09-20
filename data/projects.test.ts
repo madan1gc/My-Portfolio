@@ -22,6 +22,12 @@ describe('projects', () => {
       expect(project.liveUrl).toBeUndefined();
     });
   });
+
+  it('has no duplicate techStack entries within any single project', () => {
+    projects.forEach((project) => {
+      expect(new Set(project.techStack).size).toBe(project.techStack.length);
+    });
+  });
 });
 
 describe('getProjectBySlug', () => {

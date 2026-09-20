@@ -20,6 +20,6 @@ describe('WorkPage', () => {
       expect(screen.getByRole('heading', { name: title })).toBeInTheDocument();
     });
 
-    expect(screen.getAllByRole('link', { name: /View case study/ })).toHaveLength(7);
+    expect(screen.getAllByRole('link', { name: /^View case study:/ })).toHaveLength(7);
   });
 });
