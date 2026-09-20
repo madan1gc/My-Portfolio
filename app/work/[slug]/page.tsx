@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder';
 import { Tag } from '@/components/ui/Tag';
-import { getProjectBySlug, projects } from '@/data/projects';
+import { profile } from '@/data/profile';
+import { getProjectBySlug, projects, type Project } from '@/data/projects';
 
 interface WorkCaseStudyPageProps {
   params: { slug: string };
@@ -33,6 +34,24 @@ function CaseStudySection({ eyebrow, body }: { eyebrow: string; body: string }) 
   );
 }
 
+function CreativeWorkJsonLd({ project }: { project: Project }) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.summary,
+    creator: {
+      '@type': 'Person',
+      name: profile.name,
+    },
+  };
+
+  return (
+    // eslint-disable-next-line react/no-danger
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+  );
+}
+
 export default function WorkCaseStudyPage({ params }: WorkCaseStudyPageProps) {
   const project = getProjectBySlug(params.slug);
 
@@ -42,6 +61,7 @@ export default function WorkCaseStudyPage({ params }: WorkCaseStudyPageProps) {
 
   return (
     <>
+      <CreativeWorkJsonLd project={project} />
       <header className="mx-auto max-w-6xl px-6 pb-8 pt-24">
         <h1 className="mb-4 text-4xl font-semibold text-foreground sm:text-5xl">{project.title}</h1>
         <p className="mb-6 max-w-prose text-lg text-muted">{project.summary}</p>

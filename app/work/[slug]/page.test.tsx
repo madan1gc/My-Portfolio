@@ -38,4 +38,13 @@ describe('WorkCaseStudyPage', () => {
     expect(screen.queryByRole('link', { name: 'GitHub' })).toBeNull();
     expect(screen.queryByRole('link', { name: 'Live Site' })).toBeNull();
   });
+
+  it('renders CreativeWork JSON-LD structured data for the project', () => {
+    const { container } = render(<WorkCaseStudyPage params={{ slug: 'trailvista-theme' }} />);
+    const script = container.querySelector('script[type="application/ld+json"]');
+    expect(script).not.toBeNull();
+    const data = JSON.parse(script?.innerHTML ?? '{}');
+    expect(data['@type']).toBe('CreativeWork');
+    expect(data.name).toBe('Trailvista Theme');
+  });
 });

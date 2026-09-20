@@ -23,4 +23,13 @@ describe('BlogPostPage', () => {
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Back to blog/ })).toHaveAttribute('href', '/blog');
   });
+
+  it('renders BlogPosting JSON-LD structured data for the post', () => {
+    const { container } = render(<BlogPostPage params={{ slug: 'elementor-vs-bricks' }} />);
+    const script = container.querySelector('script[type="application/ld+json"]');
+    expect(script).not.toBeNull();
+    const data = JSON.parse(script?.innerHTML ?? '{}');
+    expect(data['@type']).toBe('BlogPosting');
+    expect(data.headline).toBe('Elementor vs Bricks');
+  });
 });
