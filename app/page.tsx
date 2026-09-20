@@ -1,5 +1,6 @@
 import { Contact } from '@/components/sections/Contact';
 import { Experience } from '@/components/sections/Experience';
+import { FeaturedProjects } from '@/components/sections/FeaturedProjects';
 import { Hero } from '@/components/sections/Hero';
 import { Skills } from '@/components/sections/Skills';
 import { Testimonials } from '@/components/sections/Testimonials';
@@ -28,7 +29,7 @@ export default function HomePage() {
       <PersonJsonLd />
       <Hero />
       <Trust />
-      {/* Phase 2 will insert a "Featured Projects" section here. */}
+      <FeaturedProjects />
       <Skills />
       <Experience />
       {/* Phase 3 will insert an Open Source/Community highlight strip here. */}

@@ -22,6 +22,9 @@ describe('HomePage', () => {
     // Trust
     expect(screen.getByText('Codewing Solutions')).toBeInTheDocument();
 
+    // Featured Projects
+    expect(screen.getByRole('heading', { name: 'Trailvista Theme' })).toBeInTheDocument();
+
     // Skills
     expect(screen.getByRole('heading', { name: 'Frontend' })).toBeInTheDocument();
     expect(screen.getByText('React')).toBeInTheDocument();
