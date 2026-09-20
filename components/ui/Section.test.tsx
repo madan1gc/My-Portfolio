@@ -31,4 +31,22 @@ describe('Section', () => {
     );
     expect(screen.getByRole('heading', { name: 'Skills', level: 2 })).toBeInTheDocument();
   });
+
+  it('renders the title as an h2 when as="h1" (closes the heading-order gap on route pages)', () => {
+    render(
+      <Section eyebrow="Work" title="Case studies." as="h1">
+        <p>Body</p>
+      </Section>,
+    );
+    expect(screen.getByRole('heading', { name: 'Case studies.', level: 2 })).toBeInTheDocument();
+  });
+
+  it('keeps the title as plain text, not a heading, for the default as="h2" case', () => {
+    render(
+      <Section eyebrow="Skills" title="Some descriptive title.">
+        <p>Body</p>
+      </Section>,
+    );
+    expect(screen.queryByRole('heading', { name: 'Some descriptive title.' })).toBeNull();
+  });
 });
