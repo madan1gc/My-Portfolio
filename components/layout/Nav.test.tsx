@@ -43,4 +43,23 @@ describe('Nav', () => {
     expect(toggle).toHaveAttribute('aria-expanded', 'false');
     expect(document.getElementById('mobile-nav')).toBeNull();
   });
+
+  it('nests the mobile menu inside the Primary nav landmark', async () => {
+    const user = userEvent.setup();
+    render(<Nav />);
+    await user.click(screen.getByRole('button', { name: 'Toggle navigation menu' }));
+    const nav = screen.getByRole('navigation', { name: 'Primary' });
+    const mobileMenu = document.getElementById('mobile-nav');
+    expect(mobileMenu).not.toBeNull();
+    expect(nav.contains(mobileMenu)).toBe(true);
+  });
+
+  it('closes the mobile menu when Escape is pressed', async () => {
+    const user = userEvent.setup();
+    render(<Nav />);
+    await user.click(screen.getByRole('button', { name: 'Toggle navigation menu' }));
+    expect(document.getElementById('mobile-nav')).not.toBeNull();
+    await user.keyboard('{Escape}');
+    expect(document.getElementById('mobile-nav')).toBeNull();
+  });
 });
