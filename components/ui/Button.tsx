@@ -11,18 +11,15 @@ interface ButtonProps {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  // Darker gradient endpoints than accent.from/accent.to so white button
-  // text clears AA (4.5:1) across the whole gradient — see contrast math in
-  // the Phase 1 fix report. Shadows keep the brand accent colors since
-  // shadow contrast isn't an AA text requirement.
-  primary:
-    'bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white shadow-lg shadow-accent-from/20 hover:shadow-accent-from/40',
-  secondary: 'border border-border text-foreground hover:border-accent-from',
+  // accent-strong is picked per-theme (see the color token table in the
+  // visual-refresh spec) so white button text clears AA on both themes.
+  primary: 'bg-accent-strong text-white hover:bg-accent',
+  secondary: 'border border-border text-foreground hover:border-accent',
   ghost: 'text-muted hover:text-foreground',
 };
 
 const focusRingClasses =
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-from focus-visible:ring-offset-2 focus-visible:ring-offset-background';
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background';
 
 export function Button({ href, variant = 'primary', children, external = false }: ButtonProps) {
   return (
