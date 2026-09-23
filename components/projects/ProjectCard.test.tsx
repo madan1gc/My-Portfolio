@@ -29,4 +29,12 @@ describe('ProjectCard', () => {
       '/work/trailvista-theme',
     );
   });
+
+  it('marks the arrow decorative and gives it a hover transition, without changing the accessible link name', () => {
+    render(<ProjectCard project={project} />);
+    const link = screen.getByRole('link', { name: 'View case study: Trailvista Theme' });
+    const arrow = link.querySelector('[aria-hidden="true"]');
+    expect(arrow).not.toBeNull();
+    expect(arrow?.className).toContain('transition-transform');
+  });
 });

@@ -18,4 +18,11 @@ describe('BlogPreview', () => {
 
     expect(screen.getByRole('link', { name: /View all posts/ })).toHaveAttribute('href', '/blog');
   });
+
+  it('gives the section title the one-off editorial italic-serif treatment', () => {
+    render(<BlogPreview />);
+    expect(screen.getByText('Notes on WordPress and frontend development.').className).toContain(
+      'font-serif',
+    );
+  });
 });
