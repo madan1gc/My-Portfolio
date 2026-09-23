@@ -14,6 +14,8 @@
   --color-accent-strong: 13 148 136;
   --color-accent-text: 94 234 212;
   --color-accent-warm: 253 186 116;
+  --color-on-accent: 11 18 17;
+  --color-accent-hover: 45 212 191;
 }
 
 :root[data-theme='light'] {
@@ -28,6 +30,25 @@
   --color-accent-strong: 15 118 110;
   --color-accent-text: 15 118 110;
   --color-accent-warm: 194 65 12;
+  --color-on-accent: 255 255 255;
+  --color-accent-hover: 19 78 74;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --color-background: 247 250 249;
+    --color-surface: 255 255 255;
+    --color-border: 220 230 228;
+    --color-foreground: 15 20 19;
+    --color-muted: 91 102 100;
+    --color-accent: 13 148 136;
+    --color-accent-strong: 15 118 110;
+    --color-accent-text: 15 118 110;
+    --color-accent-warm: 194 65 12;
+    --color-on-accent: 255 255 255;
+    --color-accent-hover: 19 78 74;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

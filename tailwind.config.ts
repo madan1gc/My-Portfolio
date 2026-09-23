@@ -10,11 +10,13 @@ const config: Config = {
         border: 'rgb(var(--color-border) / <alpha-value>)',
         foreground: 'rgb(var(--color-foreground) / <alpha-value>)',
         muted: 'rgb(var(--color-muted) / <alpha-value>)',
+        'on-accent': 'rgb(var(--color-on-accent) / <alpha-value>)',
         accent: {
           DEFAULT: 'rgb(var(--color-accent) / <alpha-value>)',
           strong: 'rgb(var(--color-accent-strong) / <alpha-value>)',
           warm: 'rgb(var(--color-accent-warm) / <alpha-value>)',
           text: 'rgb(var(--color-accent-text) / <alpha-value>)',
+          hover: 'rgb(var(--color-accent-hover) / <alpha-value>)',
         },
       },
       fontFamily: {
@@ -26,17 +28,12 @@ const config: Config = {
         prose: '68ch',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
         caret: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0' },
         },
       },
       animation: {
-        float: 'float 8s ease-in-out infinite',
         caret: 'caret 1s step-end infinite',
       },
     },

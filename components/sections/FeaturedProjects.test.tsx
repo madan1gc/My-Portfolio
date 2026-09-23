@@ -20,5 +20,6 @@ describe('FeaturedProjects', () => {
     const grid = container.querySelector('.grid');
     const firstItem = grid?.firstElementChild;
     expect(firstItem?.className).toContain('lg:col-span-2');
+    expect(firstItem?.className).toContain('lg:row-span-2');
   });
 });

@@ -11,9 +11,11 @@ interface ButtonProps {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  // accent-strong is picked per-theme (see the color token table in the
-  // visual-refresh spec) so white button text clears AA on both themes.
-  primary: 'bg-accent-strong text-white hover:bg-accent',
+  // on-accent and accent-hover are both picked per-theme specifically so
+  // this pairing clears AA contrast at rest AND on hover in both themes —
+  // see the visual-refresh spec's token table and the final-review fix
+  // that added these two tokens.
+  primary: 'bg-accent-strong text-on-accent hover:bg-accent-hover',
   secondary: 'border border-border text-foreground hover:border-accent',
   ghost: 'text-muted hover:text-foreground',
 };

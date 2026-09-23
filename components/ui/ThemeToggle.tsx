@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function readInitialTheme(): 'light' | 'dark' {
   if (typeof document === 'undefined') {
@@ -11,6 +11,18 @@ function readInitialTheme(): 'light' | 'dark' {
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>(readInitialTheme);
+
+  // The no-FOUC script in app/layout.tsx may set data-theme before this
+  // component hydrates, so the server-rendered markup (always 'dark',
+  // since `document` doesn't exist during SSR) can differ from the real
+  // client theme. React 18 doesn't patch hydration mismatches — it warns
+  // and keeps the SSR output — so without this effect a light-theme
+  // visitor would see the wrong icon/label until their first click.
+  // Re-reading the attribute post-mount forces a real re-render that
+  // corrects it.
+  useEffect(() => {
+    setTheme(readInitialTheme());
+  }, []);
 
   function toggle() {
     const next = theme === 'light' ? 'dark' : 'light';

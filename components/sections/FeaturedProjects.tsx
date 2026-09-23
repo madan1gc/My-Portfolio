@@ -8,9 +8,9 @@ export function FeaturedProjects() {
 
   return (
     <Section eyebrow="Featured Projects" title="Case studies from real WordPress and frontend work.">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
         {featured.map((project, index) => (
-          <div key={project.slug} className={index === 0 ? 'lg:col-span-2' : ''}>
+          <div key={project.slug} className={index === 0 ? 'lg:col-span-2 lg:row-span-2' : ''}>
             <ProjectCard project={project} />
           </div>
         ))}

@@ -9,7 +9,7 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="bg-accent-strong text-[#0B1211]">
+    <footer className="bg-accent-strong text-on-accent">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-12 text-sm sm:flex-row sm:items-center sm:justify-between">
         <p>
           © {new Date().getFullYear()} {profile.name}. {profile.location}.
@@ -19,7 +19,7 @@ export function Footer() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="rounded underline underline-offset-4 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B1211] focus-visible:ring-offset-2 focus-visible:ring-offset-accent-strong"
+                className="rounded underline underline-offset-4 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-accent focus-visible:ring-offset-2 focus-visible:ring-offset-accent-strong"
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               >
