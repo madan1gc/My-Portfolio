@@ -14,4 +14,11 @@ describe('FeaturedProjects', () => {
 
     expect(screen.getByRole('link', { name: /View all projects/ })).toHaveAttribute('href', '/work');
   });
+
+  it('spans the first featured project across two columns on large screens', () => {
+    const { container } = render(<FeaturedProjects />);
+    const grid = container.querySelector('.grid');
+    const firstItem = grid?.firstElementChild;
+    expect(firstItem?.className).toContain('lg:col-span-2');
+  });
 });

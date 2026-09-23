@@ -37,4 +37,12 @@ describe('ProjectCard', () => {
     expect(arrow).not.toBeNull();
     expect(arrow?.className).toContain('transition-transform');
   });
+
+  it('reveals the tags and CTA in a glass overlay on hover and on keyboard focus', () => {
+    render(<ProjectCard project={project} />);
+    const link = screen.getByRole('link', { name: 'View case study: Trailvista Theme' });
+    const overlay = link.closest('div');
+    expect(overlay?.className).toContain('group-focus-within:translate-y-0');
+    expect(overlay?.className).toContain('backdrop-blur');
+  });
 });
