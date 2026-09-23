@@ -50,15 +50,17 @@ describe('Section', () => {
     expect(screen.queryByRole('heading', { name: 'Some descriptive title.' })).toBeNull();
   });
 
-  it('renders the eyebrow as a pill with a decorative dot', () => {
+  it('renders the eyebrow with a solid square accent marker, not a pill', () => {
     render(
       <Section eyebrow="Skills" title="Some descriptive title.">
         <p>Body</p>
       </Section>,
     );
     const eyebrow = screen.getByRole('heading', { name: 'Skills' });
-    expect(eyebrow.className).toContain('rounded-full');
-    expect(eyebrow.querySelector('[aria-hidden="true"]')).not.toBeNull();
+    expect(eyebrow.className).not.toContain('rounded-full');
+    const marker = eyebrow.querySelector('[aria-hidden="true"]');
+    expect(marker).not.toBeNull();
+    expect(marker?.className).toContain('bg-accent-strong');
   });
 
   it('applies an optional titleClassName to the title for one-off typographic treatments', () => {
