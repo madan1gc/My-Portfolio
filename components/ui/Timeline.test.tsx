@@ -32,4 +32,10 @@ describe('Timeline', () => {
     expect(screen.getByText('Shipped things')).toBeInTheDocument();
     expect(screen.getByText('Learned things')).toBeInTheDocument();
   });
+
+  it('uses a dashed connector line, not a solid one', () => {
+    const { container } = render(<Timeline items={items} />);
+    const list = container.querySelector('ol');
+    expect(list?.className).toContain('border-dashed');
+  });
 });
