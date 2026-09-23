@@ -20,7 +20,7 @@ export function BlogPreview() {
       <div className="mt-8">
         <Link
           href="/blog"
-          className="rounded text-sm font-medium text-accent-text hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-from focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="rounded text-sm font-medium text-accent-text hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           View all posts <span aria-hidden="true">→</span>
         </Link>

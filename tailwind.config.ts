@@ -5,19 +5,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#0A0A0F',
-        surface: '#12121A',
-        border: '#232330',
-        foreground: '#F5F5F7',
-        muted: '#9CA3AF',
+        background: 'rgb(var(--color-background) / <alpha-value>)',
+        surface: 'rgb(var(--color-surface) / <alpha-value>)',
+        border: 'rgb(var(--color-border) / <alpha-value>)',
+        foreground: 'rgb(var(--color-foreground) / <alpha-value>)',
+        muted: 'rgb(var(--color-muted) / <alpha-value>)',
         accent: {
-          from: '#6366F1',
-          to: '#A855F7',
-          // AA-compliant (~6.62:1 on #0A0A0F) alternative to accent.from for
-          // small text (e.g. text-xs uppercase eyebrows), which fails AA at
-          // accent.from's ~4.42:1. Do not use for large/gradient text or
-          // decorative borders/glows — those keep accent.from/accent.to.
-          text: '#818CF8',
+          DEFAULT: 'rgb(var(--color-accent) / <alpha-value>)',
+          strong: 'rgb(var(--color-accent-strong) / <alpha-value>)',
+          warm: 'rgb(var(--color-accent-warm) / <alpha-value>)',
+          text: 'rgb(var(--color-accent-text) / <alpha-value>)',
         },
       },
       fontFamily: {
