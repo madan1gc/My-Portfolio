@@ -32,16 +32,21 @@ describe('ProjectCard', () => {
 
   it('marks the arrow decorative and gives it a hover transition', () => {
     const { container } = render(<ProjectCard project={project} />);
-    const overlay = container.querySelector('[aria-hidden="true"]');
-    const arrow = overlay?.querySelector('span > span');
+    const overlay = container.querySelector('.translate-y-full');
+    const arrow = overlay?.querySelector('span[aria-hidden="true"] > span');
     expect(arrow?.textContent).toBe('→');
     expect(arrow?.className).toContain('transition-transform');
   });
 
   it('reveals the tags and CTA text in a glass overlay on hover and on keyboard focus of the card link', () => {
     const { container } = render(<ProjectCard project={project} />);
-    const overlay = container.querySelector('[aria-hidden="true"]');
+    const overlay = container.querySelector('.translate-y-full');
     expect(overlay?.className).toContain('group-focus-within:translate-y-0');
     expect(overlay?.className).toContain('backdrop-blur');
+  });
+
+  it('keeps the tech-stack tags reachable in the accessibility tree (not aria-hidden)', () => {
+    render(<ProjectCard project={project} />);
+    expect(screen.getByText('Gutenberg').closest('[aria-hidden="true"]')).toBeNull();
   });
 });

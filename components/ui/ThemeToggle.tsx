@@ -10,7 +10,7 @@ function readInitialTheme(): 'light' | 'dark' {
 }
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(readInitialTheme);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   // The no-FOUC script in app/layout.tsx may set data-theme before this
   // component hydrates, so the server-rendered markup (always 'dark',

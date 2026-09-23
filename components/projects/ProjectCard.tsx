@@ -15,7 +15,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-sm text-muted">{project.summary}</p>
       </div>
       <div
-        aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-surface/95 p-6 backdrop-blur transition-transform duration-300 group-hover:translate-y-0 group-focus-within:translate-y-0"
       >
         <div className="mb-4 flex flex-wrap gap-2">
@@ -23,7 +22,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <Tag key={tech}>{tech}</Tag>
           ))}
         </div>
-        <span className="inline-flex items-center text-sm font-medium text-accent-text">
+        <span aria-hidden="true" className="inline-flex items-center text-sm font-medium text-accent-text">
           View case study{' '}
           <span className="ml-1 inline-block transition-transform duration-200 group-hover:translate-x-1">
             →
@@ -33,7 +32,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <Link
         href={`/work/${project.slug}`}
         aria-label={`View case study: ${project.title}`}
-        className="absolute inset-0 z-10 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className="absolute inset-0 z-10 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
       />
     </Card>
   );
