@@ -42,4 +42,10 @@ describe('Hero', () => {
     expect(caret).not.toBeNull();
     expect(caret?.className).toContain('motion-reduce:animate-none');
   });
+
+  it('does not render the old gradient-blur glow orb', () => {
+    const { container } = render(<Hero />);
+    expect(container.innerHTML).not.toContain('blur-3xl');
+    expect(container.innerHTML).not.toContain('blur-xl');
+  });
 });
