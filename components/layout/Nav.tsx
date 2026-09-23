@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/Button';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { profile } from '@/data/profile';
 
 const navLinks = [
@@ -57,6 +58,7 @@ export function Nav() {
           </ul>
 
           <div className="hidden items-center gap-4 md:flex">
+            <ThemeToggle />
             <Button href={profile.resumeUrl} variant="ghost" external>
               Résumé
             </Button>
@@ -94,9 +96,12 @@ export function Nav() {
               </li>
             ))}
             <li>
-              <Button href="/#contact" variant="primary">
-                Let&apos;s talk
-              </Button>
+              <div className="flex items-center justify-between gap-4">
+                <Button href="/#contact" variant="primary">
+                  Let&apos;s talk
+                </Button>
+                <ThemeToggle />
+              </div>
             </li>
           </ul>
         )}
