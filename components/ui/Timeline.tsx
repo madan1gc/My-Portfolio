@@ -11,10 +11,10 @@ interface TimelineProps {
 
 export function Timeline({ items }: TimelineProps) {
   return (
-    <ol className="relative border-l border-border pl-6">
+    <ol className="relative border-l border-dashed border-border pl-6">
       {items.map((item) => (
         <li key={`${item.title}-${item.period}`} className="relative mb-10 last:mb-0">
-          <span className="absolute -left-[29px] mt-1.5 h-2.5 w-2.5 rounded-full bg-gradient-to-r from-accent-from to-accent-to" />
+          <span className="absolute -left-[29px] mt-1.5 h-2.5 w-2.5 rounded-full bg-accent-strong" />
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
             <span className="text-sm text-muted">{item.period}</span>

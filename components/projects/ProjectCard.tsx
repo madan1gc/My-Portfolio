@@ -9,30 +9,31 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="group relative overflow-hidden">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-accent-from/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-      />
-      <div className="relative">
+    <Card className="group relative flex h-full flex-col overflow-hidden">
+      <div className="relative flex-1">
         <h3 className="mb-2 text-lg font-semibold text-foreground">{project.title}</h3>
-        <p className="mb-4 text-sm text-muted">{project.summary}</p>
+        <p className="text-sm text-muted">{project.summary}</p>
+      </div>
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-surface/95 p-6 backdrop-blur transition-transform duration-300 group-hover:translate-y-0 group-focus-within:translate-y-0"
+      >
         <div className="mb-4 flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
             <Tag key={tech}>{tech}</Tag>
           ))}
         </div>
-        <Link
-          href={`/work/${project.slug}`}
-          aria-label={`View case study: ${project.title}`}
-          className="rounded text-sm font-medium text-accent-text hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-from focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-        >
+        <span aria-hidden="true" className="inline-flex items-center text-sm font-medium text-accent-text">
           View case study{' '}
-          <span aria-hidden="true" className="inline-block transition-transform duration-200 group-hover:translate-x-1">
+          <span className="ml-1 inline-block transition-transform duration-200 group-hover:translate-x-1">
             →
           </span>
-        </Link>
+        </span>
       </div>
+      <Link
+        href={`/work/${project.slug}`}
+        aria-label={`View case study: ${project.title}`}
+        className="absolute inset-0 z-10 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
+      />
     </Card>
   );
 }

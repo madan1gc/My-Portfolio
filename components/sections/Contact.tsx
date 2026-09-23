@@ -8,7 +8,7 @@ export function Contact() {
       <FadeIn>
         <h2 className="mb-4 text-3xl font-semibold text-foreground sm:text-5xl">
           Have a project or product idea?
-          <span className="block bg-gradient-to-r from-accent-from to-accent-to bg-clip-text text-transparent">
+          <span className="block text-accent">
             Let&apos;s build something meaningful together.
           </span>
         </h2>

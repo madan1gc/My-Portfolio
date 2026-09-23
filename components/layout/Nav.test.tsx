@@ -1,9 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Nav } from './Nav';
 
+const { usePathname } = vi.hoisted(() => ({ usePathname: vi.fn(() => '/') }));
+
+vi.mock('next/navigation', () => ({
+  usePathname,
+}));
+
 describe('Nav', () => {
+  beforeEach(() => {
+    usePathname.mockReturnValue('/');
+  });
+
   it('renders the primary nav links', () => {
     render(<Nav />);
     expect(screen.getByRole('link', { name: 'Work' })).toHaveAttribute('href', '/work');
@@ -70,5 +80,12 @@ describe('Nav', () => {
     await user.click(toggle);
     await user.keyboard('{Escape}');
     expect(toggle).toHaveFocus();
+  });
+
+  it("underlines the active route's link and leaves the others plain", () => {
+    usePathname.mockReturnValue('/work');
+    render(<Nav />);
+    expect(screen.getByRole('link', { name: 'Work' }).className).toContain('border-accent');
+    expect(screen.getByRole('link', { name: 'Blog' }).className).toContain('border-transparent');
   });
 });

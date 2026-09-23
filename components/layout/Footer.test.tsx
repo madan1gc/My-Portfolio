@@ -24,4 +24,16 @@ describe('Footer', () => {
     expect(screen.queryByText(/instagram/i)).toBeNull();
     expect(screen.queryByText(/9843222825/)).toBeNull();
   });
+
+  it('uses one solid full-bleed accent-strong band as the page\'s closing color moment', () => {
+    const { container } = render(<Footer />);
+    const footer = container.querySelector('footer');
+    expect(footer?.className).toContain('bg-accent-strong');
+  });
+
+  it('underlines footer links instead of relying on color alone for affordance', () => {
+    render(<Footer />);
+    const link = screen.getByRole('link', { name: 'GitHub' });
+    expect(link.className).toContain('underline');
+  });
 });

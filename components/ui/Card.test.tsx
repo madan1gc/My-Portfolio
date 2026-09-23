@@ -12,4 +12,11 @@ describe('Card', () => {
     render(<Card className="custom-class">Content</Card>);
     expect(screen.getByText('Content')).toHaveClass('custom-class');
   });
+
+  it('uses a hard border-color hover state, no blur glow shadow', () => {
+    render(<Card>Content</Card>);
+    const card = screen.getByText('Content');
+    expect(card.className).toContain('hover:border-accent');
+    expect(card.className).not.toContain('shadow-[');
+  });
 });

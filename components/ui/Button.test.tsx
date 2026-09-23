@@ -29,4 +29,11 @@ describe('Button', () => {
     const link = screen.getByRole('link', { name: 'View Projects' });
     expect(link).not.toHaveAttribute('target');
   });
+
+  it('uses a solid accent fill for the primary variant, no gradient', () => {
+    render(<Button href="/work">View Projects</Button>);
+    const link = screen.getByRole('link', { name: 'View Projects' });
+    expect(link.className).toContain('bg-accent-strong');
+    expect(link.className).not.toContain('bg-gradient-to-r');
+  });
 });
