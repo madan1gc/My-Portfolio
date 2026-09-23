@@ -30,6 +30,7 @@ export function ThemeToggle() {
       onClick={toggle}
       aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
       className="rounded p-2 text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      suppressHydrationWarning
     >
       {theme === 'light' ? (
         <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
