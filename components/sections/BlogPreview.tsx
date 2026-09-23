@@ -7,7 +7,11 @@ export function BlogPreview() {
   const latest = blogPosts.slice(0, 3);
 
   return (
-    <Section eyebrow="From the Blog" title="Notes on WordPress and frontend development.">
+    <Section
+      eyebrow="From the Blog"
+      title="Notes on WordPress and frontend development."
+      titleClassName="font-serif italic font-medium"
+    >
       <div className="grid gap-6 sm:grid-cols-3">
         {latest.map((post) => (
           <BlogPostCard key={post.slug} post={post} />

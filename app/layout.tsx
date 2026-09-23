@@ -1,9 +1,19 @@
 import type { Metadata } from 'next';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
+import { Playfair_Display } from 'next/font/google';
 import { Footer } from '@/components/layout/Footer';
 import { Nav } from '@/components/layout/Nav';
 import './globals.css';
+
+// Loaded for a single deliberate editorial moment (the Blog section's
+// italic-serif heading) — see Section's `titleClassName` prop.
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  style: ['italic'],
+  weight: ['600'],
+  variable: '--font-serif',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://madangc.example'),
@@ -17,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${playfairDisplay.variable}`}>
       <body className="bg-background font-sans text-foreground antialiased">
         <a
           href="#main-content"

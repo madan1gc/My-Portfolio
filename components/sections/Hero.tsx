@@ -26,6 +26,10 @@ export function Hero() {
                 {profile.name}
                 <span className="mt-2 block bg-gradient-to-r from-accent-from to-accent-to bg-clip-text text-transparent">
                   {profile.role}
+                  <span
+                    aria-hidden="true"
+                    className="ml-1 inline-block h-[0.85em] w-[3px] translate-y-[0.1em] animate-caret bg-accent-from align-middle motion-reduce:animate-none"
+                  />
                 </span>
               </h1>
 

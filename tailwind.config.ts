@@ -23,6 +23,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-geist-mono)', 'monospace'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
       },
       maxWidth: {
         prose: '68ch',
@@ -32,9 +33,14 @@ const config: Config = {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-20px)' },
         },
+        caret: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
       },
       animation: {
         float: 'float 8s ease-in-out infinite',
+        caret: 'caret 1s step-end infinite',
       },
     },
   },

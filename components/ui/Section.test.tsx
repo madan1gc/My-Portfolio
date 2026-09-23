@@ -49,4 +49,24 @@ describe('Section', () => {
     );
     expect(screen.queryByRole('heading', { name: 'Some descriptive title.' })).toBeNull();
   });
+
+  it('renders the eyebrow as a pill with a decorative dot', () => {
+    render(
+      <Section eyebrow="Skills" title="Some descriptive title.">
+        <p>Body</p>
+      </Section>,
+    );
+    const eyebrow = screen.getByRole('heading', { name: 'Skills' });
+    expect(eyebrow.className).toContain('rounded-full');
+    expect(eyebrow.querySelector('[aria-hidden="true"]')).not.toBeNull();
+  });
+
+  it('applies an optional titleClassName to the title for one-off typographic treatments', () => {
+    render(
+      <Section eyebrow="Blog" title="Notes on frontend development." titleClassName="font-serif italic">
+        <p>Body</p>
+      </Section>,
+    );
+    expect(screen.getByText('Notes on frontend development.').className).toContain('font-serif italic');
+  });
 });
