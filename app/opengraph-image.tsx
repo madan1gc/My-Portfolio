@@ -21,13 +21,13 @@ export default function OpengraphImage() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#0A0A0F',
-          color: '#F5F5F7',
+          background: '#0B1211',
+          color: '#F3F6F5',
           fontFamily: 'Geist',
         }}
       >
         <div style={{ fontSize: 64, fontWeight: 700 }}>{profile.name}</div>
-        <div style={{ marginTop: 20, fontSize: 32, color: '#818CF8' }}>{profile.role}</div>
+        <div style={{ marginTop: 20, fontSize: 32, color: '#5EEAD4' }}>{profile.role}</div>
       </div>
     ),
     {
