@@ -199,6 +199,8 @@
   .brief textarea { resize:vertical; min-height:44px; }
   .brief input:focus, .brief select:focus, .brief textarea:focus { outline:3px solid var(--gold); outline-offset:1px; }
   .brief .opt { font-weight:400; color:var(--muted); }
+  .brief .hp { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+  .brief button:disabled { opacity:.7; cursor:progress; transform:none; box-shadow:none; }
   .brief small { grid-column:1/-1; font-size:14px; color:var(--muted); }
   .brief [aria-invalid=true] { border-color:var(--accent); background:#FFF4F0; }
   .brief .err { color:var(--accent); font-weight:600; } .brief .ok { color:var(--green); font-weight:600; }
@@ -287,7 +289,6 @@
   .card.night .btn:not(.primary) { background:transparent; color:var(--night-ink); border-color:var(--night-ink); }
   .card.night .btn:hover { box-shadow:3px 3px 0 var(--night-accent); }
 
-  .proto-note { position:fixed; right:16px; bottom:16px; z-index:20; font:500 14px 'JetBrains Mono',monospace; background:var(--ink); color:var(--paper); padding:6px 10px; }
 
   /* ===== helicopter flight ===== */
   .flight { position:fixed; inset:0; z-index:60; overflow:auto; overscroll-behavior:contain; color:var(--ink); background:linear-gradient(180deg,#9DC0E6 0%,#C9DCF0 45%,#EEF2F6 100%); opacity:0; transition:opacity .45s ease; }
@@ -357,11 +358,15 @@
   /* ---------- responsive ---------- */
   .kit > *, .exp > *, .hire-grid > *, .summit > *, .comm2 > * { min-width:0; }
   @media (max-width:900px) {
-    section { padding:96px 18px 110px; }
+    section { padding:28px 12px 36px; }
+    .card { padding:22px 18px; }
+    #kathmandu .scrollcue { display:none; }
     .alti { left:auto; right:12px; top:auto; bottom:12px; transform:none; height:auto; }
     .alti-scale { display:none; }
-    .alti-read { background:var(--card); border:1.5px solid var(--ink); padding:6px 10px; }
-    .alti-read b { font-size:18px; }
+    .alti { right:auto; left:50%; bottom:10px; transform:translateX(-50%); }
+    .alti-read { display:flex; align-items:baseline; gap:8px; background:color-mix(in oklch,var(--card) 86%,transparent); backdrop-filter:blur(6px); border:1px solid color-mix(in oklch,var(--ink) 40%,transparent); border-radius:99px; padding:5px 14px; white-space:nowrap; }
+    .alti-read b { font-size:15px; display:inline; }
+    .alti-read small { letter-spacing:.04em; }
     body.night .alti-read { background:var(--night); }
     .bar { padding:14px 16px; } .bar .btn { padding:8px 10px; }
     .bar .email, .bar .long, .mark span { display:none; }
@@ -371,7 +376,8 @@
     .hero-art { padding:10px 6px 0 0; }
     .ticket { position:relative; width:min(300px,100%); margin:-22px 6px 0 auto; bottom:auto; }
     .banner figcaption { right:12px; } .banner figcaption span:last-child { display:none; }
-    .proof { grid-template-columns:1fr 1fr; } .proof li { min-width:0; }
+    .proof { grid-template-columns:1fr 1fr; } .proof li { min-width:0; align-items:flex-start; padding:9px 10px; } .proof span { font:400 14px/1.3 'Public Sans',sans-serif; display:block; } .proof b span { display:inline; font:inherit; }
+    #kathmandu { min-height:auto; padding-bottom:56px; }
     .head { flex-direction:column; align-items:flex-start; }
     .feat-body { grid-template-columns:1fr auto; } .feat-body p { grid-column:1 / -1; grid-row:2; white-space:normal; } .feat-body .ic { grid-column:2; grid-row:1; }
     .m-type { display:none; }
@@ -387,7 +393,6 @@
     .fl-top { padding-right:0; flex-wrap:wrap; } .fl-mapbox { aspect-ratio:auto; height:560px; }
     .flight.open .fl-heli { animation:liftoff-m 1.4s cubic-bezier(.25,.8,.3,1) forwards, hover 2.4s ease-in-out 1.4s infinite alternate; }
     @keyframes liftoff-m { 0% { top:110%; transform:translate(-50%,0) scale(1.2); } 100% { top:10px; left:calc(100% - 60px); transform:translate(-50%,0) scale(.42); } }
-    .proto-note { display:none; }
   }
   @media (max-width:520px) { .logos { grid-template-columns:repeat(3,minmax(0,1fr)); } .gear span { font-size:14px; } }
   @media (prefers-reduced-motion:reduce) {
@@ -401,6 +406,17 @@
     .flight.open .fl-heli { top:16px; left:calc(100% - 120px); transform:translate(-50%,0) scale(.62); }
     .flight.open .fl-cloud { top:var(--ct); } .fl-pin { opacity:1; }
   }
+
+  /* ---------- polish: entrance, magnetic CTAs, altimeter build ---------- */
+  .nm { display:inline-block; }
+  .nm .w { display:inline-block; white-space:nowrap; }
+  .nm .ch { display:inline-block; white-space:pre; }
+  .js .nm .ch { opacity:0; transform:translateY(.45em) rotate(4deg); animation:chUp .9s cubic-bezier(.2,.8,.2,1) forwards; animation-delay:calc(.12s + var(--i) * .045s); }
+  @keyframes chUp { to { opacity:1; transform:none; } }
+  .mag { translate:var(--mx,0) var(--my,0); transition:translate .35s cubic-bezier(.2,.8,.2,1), transform .15s, box-shadow .15s; }
+  .js .alti-scale a { animation:tickIn .45s cubic-bezier(.2,.8,.2,1) both; animation-delay:calc(.5s + var(--i) * .08s); }
+  @keyframes tickIn { from { opacity:0; scale:.2; } }
+  @media (prefers-reduced-motion:reduce) { .js .nm .ch, .js .alti-scale a { animation:none; opacity:1; transform:none; } .mag { translate:none; } }
 </style>
 </head>
 <body>
@@ -461,7 +477,7 @@
     <div class="hero">
       <div>
         <div class="eyebrow rv">Trailhead · Kathmandu · 1,400 m</div>
-        <h1 class="rv" style="--d:.1s">Madan G.C. <span class="h1-role">Freelance WordPress &amp; frontend developer in Kathmandu, Nepal</span></h1>
+        <h1 class="h1-name"><span class="nm" aria-label="Madan G.C.">Madan G.C.</span> <span class="h1-role rv" style="--d:.55s">Freelance WordPress &amp; frontend developer in Kathmandu, Nepal</span></h1>
         <div class="ctas rv" style="--d:.25s">
           <a class="btn primary" href="#namche">Hire me for a project</a>
           <a class="btn" href="#lukla">See my work <svg class="ic"><use href="#i-down"/></svg></a>
@@ -528,6 +544,7 @@
           </ol>
         </div>
         <form class="brief" id="briefForm" novalidate>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
           <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
           <label>Email<input name="email" type="email" required autocomplete="email" placeholder="you@company.com"></label>
           <label>Project<select name="type"><option>Business website</option><option>Custom plugin</option><option>Block theme</option><option>Elementor / Bricks</option><option>WooCommerce store</option><option>Speed fix</option><option>Other</option></select></label>
@@ -703,7 +720,6 @@
   </div>
 </div>
 
-<div class="proto-note">Prototype · not the live site</div>
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
@@ -833,7 +849,7 @@ document.getElementById('logos').innerHTML = logos.map(([f,n],i) => `<div class=
   draw(); addEventListener('resize', draw); document.fonts && document.fonts.ready.then(draw); setTimeout(draw, 1200);
 })();
 
-// ---------- contact form (prototype: opens the visitor's email app) ----------
+// ---------- contact form (sends through FormSubmit, falls back to email) ----------
 (() => {
   const f = document.getElementById('briefForm'), hint = document.getElementById('briefHint'), TO = 'madan1239@gmail.com';
   f.addEventListener('input', e => e.target.removeAttribute('aria-invalid'));
@@ -845,10 +861,21 @@ document.getElementById('logos').innerHTML = logos.map(([f,n],i) => `<div class=
     bad.forEach(el => el.setAttribute('aria-invalid', 'true'));
     if (bad.length) { hint.innerHTML = `<span class="err">Please add ${bad.map(el => el.name === 'name' ? 'your name' : 'a valid email').join(' and ')}.</span>`; bad[0].focus(); return; }
     f.querySelectorAll('[aria-invalid]').forEach(el => el.removeAttribute('aria-invalid'));
-    const subject = `New project: ${type} (${name})`;
+    if (f._honey.value) return;
+    const subject = `New project: ${type} (${name})`, btn = f.querySelector('[type=submit]');
     const body = `Hi Madan,\n\nName: ${name}\nEmail: ${email}\nProject: ${type}\n\n${msg || '(Tell me a bit about the project, timeline and budget.)'}\n`;
-    location.href = `mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    hint.innerHTML = `<span class="ok">✓ Your email app should open with your message ready. Just hit send.</span> Nothing opened? Email <a href="mailto:${TO}">${TO}</a>.`;
+    btn.disabled = true; btn.firstChild.textContent = 'Sending… ';
+    fetch(`https://formsubmit.co/ajax/${TO}`, { method:'POST', headers:{ 'Content-Type':'application/json', Accept:'application/json' },
+      body:JSON.stringify({ name, email, project:type, message:msg || '(no details)', _subject:subject, _replyto:email, _template:'table', _captcha:'false' }) })
+      .then(r => r.json()).then(d => {
+        if (!(d.success === true || d.success === 'true')) throw new Error(d.message || 'failed');
+        f.reset(); btn.firstChild.textContent = 'Message sent ';
+        hint.innerHTML = `<span class="ok">✓ Thanks, ${name.split(' ')[0]}. Your message is in my inbox and I’ll reply within 1 working day.</span>`;
+      })
+      .catch(() => {
+        btn.disabled = false; btn.firstChild.textContent = 'Send message ';
+        hint.innerHTML = `<span class="err">The message didn’t send.</span> <a href="mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}">Send it from your email app instead</a>.`;
+      });
   });
 })();
 
@@ -932,6 +959,22 @@ function update(){
 addEventListener('scroll', () => { if (!reduce) { hiker.classList.add('walk'); clearTimeout(walkT); walkT = setTimeout(() => hiker.classList.remove('walk'), 160); }
   if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive:true });
 addEventListener('resize', update); update();
+
+
+// ---------- polish: name entrance + magnetic CTAs ----------
+(() => {
+  const nm = document.querySelector('.nm');
+  if (nm) { let i = 0; nm.innerHTML = nm.textContent.split(' ').map(w => `<span class="w" aria-hidden="true">${[...w].map(c => `<span class="ch" style="--i:${i++}">${c}</span>`).join('')}</span>`).join(' '); }
+  document.querySelectorAll('.alti-scale a').forEach((a, i) => a.style.setProperty('--i', i));
+  if (reduce || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  document.querySelectorAll('.btn.primary, .ticket, .btn.heli').forEach(el => {
+    el.classList.add('mag');
+    el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', ((e.clientX - r.left - r.width / 2) * .22).toFixed(1) + 'px');
+      el.style.setProperty('--my', ((e.clientY - r.top - r.height / 2) * .3).toFixed(1) + 'px'); });
+    el.addEventListener('pointerleave', () => { el.style.setProperty('--mx', '0px'); el.style.setProperty('--my', '0px'); });
+  });
+})();
 
 // ---------- reveal + count-up ----------
 function countUp(el){ const end = +el.dataset.count; if (reduce) return; let n = 0; const step = () => { n++; el.textContent = n; if (n < end) setTimeout(step, 600/end); }; el.textContent = 0; step(); }
