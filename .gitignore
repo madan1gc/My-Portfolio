@@ -1,7 +1,7 @@
-node_modules/
-.next/
-out/
-*.tsbuildinfo
-next-env.d.ts
-.env*.local
-coverage/
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# browser-tool output (screenshots, logs) - never put real work here
+.playwright-mcp/
