@@ -554,8 +554,10 @@
             <li><span class="st-ic summit"><svg class="ic"><use href="#i-mountain"/></svg></span><b>04 Launch</b><span>Handover &amp; support</span></li>
           </ol>
         </div>
-        <form class="brief" id="briefForm" novalidate>
-          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+        <form class="brief" id="briefForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="contact">
+          <input type="hidden" name="subject" value="New project enquiry">
+          <input type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
           <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
           <label>Email<input name="email" type="email" required autocomplete="email" placeholder="you@company.com"></label>
           <label>Project<select name="type"><option>Business website</option><option>Custom plugin</option><option>Block theme</option><option>Elementor / Bricks</option><option>WooCommerce store</option><option>Speed fix</option><option>Other</option></select></label>
@@ -860,7 +862,7 @@ document.getElementById('logos').innerHTML = logos.map(([f,n],i) => `<div class=
   draw(); addEventListener('resize', draw); document.fonts && document.fonts.ready.then(draw); setTimeout(draw, 1200);
 })();
 
-// ---------- contact form (sends through FormSubmit, falls back to email) ----------
+// ---------- contact form (Netlify Forms, falls back to email) ----------
 (() => {
   const f = document.getElementById('briefForm'), hint = document.getElementById('briefHint'), TO = 'madan1239@gmail.com';
   f.addEventListener('input', e => e.target.removeAttribute('aria-invalid'));
@@ -872,14 +874,14 @@ document.getElementById('logos').innerHTML = logos.map(([f,n],i) => `<div class=
     bad.forEach(el => el.setAttribute('aria-invalid', 'true'));
     if (bad.length) { hint.innerHTML = `<span class="err">Please add ${bad.map(el => el.name === 'name' ? 'your name' : 'a valid email').join(' and ')}.</span>`; bad[0].focus(); return; }
     f.querySelectorAll('[aria-invalid]').forEach(el => el.removeAttribute('aria-invalid'));
-    if (f._honey.value) return;
+    if (f['bot-field'].value) return;
     const subject = `New project: ${type} (${name})`, btn = f.querySelector('[type=submit]');
     const body = `Hi Madan,\n\nName: ${name}\nEmail: ${email}\nProject: ${type}\n\n${msg || '(Tell me a bit about the project, timeline and budget.)'}\n`;
     btn.disabled = true; btn.firstChild.textContent = 'Sending… ';
-    fetch(`https://formsubmit.co/ajax/${TO}`, { method:'POST', headers:{ 'Content-Type':'application/json', Accept:'application/json' },
-      body:JSON.stringify({ name, email, project:type, message:msg || '(no details)', _subject:subject, _replyto:email, _template:'table', _captcha:'false' }) })
-      .then(r => r.json()).then(d => {
-        if (!(d.success === true || d.success === 'true')) throw new Error(d.message || 'failed');
+    f.subject.value = subject;
+    fetch('/', { method:'POST', headers:{ 'Content-Type':'application/x-www-form-urlencoded' }, body:new URLSearchParams(new FormData(f)).toString() })
+      .then(r => {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
         f.reset(); btn.firstChild.textContent = 'Message sent ';
         hint.innerHTML = `<span class="ok">✓ Thanks, ${name.split(' ')[0]}. Your message is in my inbox and I’ll reply within 1 working day.</span>`;
       })
