@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://madangc.com.np/sitemap.xml
