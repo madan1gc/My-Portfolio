@@ -27,6 +27,7 @@
   }
   * { box-sizing:border-box; margin:0; padding:0; }
   html { scroll-behavior:smooth; overflow-x:clip; }
+  html.lenis, html.lenis body { height:auto; } .lenis.lenis-smooth { scroll-behavior:auto !important; } .lenis.lenis-stopped { overflow:clip; }
   body { font-family:'Public Sans',system-ui,sans-serif; color:var(--ink); background:var(--paper); line-height:1.55; overflow-x:hidden; }
   img { display:block; max-width:100%; }
   a { color:inherit; }
@@ -66,16 +67,14 @@
   .alti-read { align-self:flex-end; font-family:'JetBrains Mono',monospace; }
   .alti-read b { display:block; font:600 22px 'JetBrains Mono',monospace; font-variant-numeric:tabular-nums; }
   .alti-read small { font-size:14px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
-  body.night .alti-read b, body.photo .alti-read b { color:var(--night-ink); } body.night .alti-read small, body.photo .alti-read small { color:var(--night-muted); }
-  body.photo .alti-scale { background:repeating-linear-gradient(to bottom,rgba(255,255,255,.5) 0 4px,transparent 4px 8px); }
+  body.night .alti-read b { color:var(--night-ink); } body.night .alti-read small { color:var(--night-muted); }
 
   /* ---------- top bar ---------- */
   .bar { position:fixed; top:0; left:0; right:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:18px 28px; }
   .mark { display:flex; align-items:center; gap:10px; font-family:'Newsreader',serif; font-weight:600; font-size:20px; text-decoration:none; }
   .mark svg { width:32px; height:32px; transition:transform .3s; }
   .mark:hover svg { transform:rotate(-6deg) scale(1.05); }
-  body.night .mark, body.photo .mark { color:var(--night-ink); }
-  .mark, .alti-read b, .alti-read small { transition:color .3s; }
+  body.night .mark { color:var(--night-ink); }
   .bar nav { display:flex; gap:10px; }
   .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 16px; font:500 14px 'JetBrains Mono',monospace; text-decoration:none; border:1.5px solid var(--ink); color:var(--ink); background:var(--card); transition:transform .15s, box-shadow .15s; white-space:nowrap; cursor:pointer; }
   .btn .ic { width:16px; height:16px; }
@@ -363,7 +362,7 @@
     .alti-scale { display:none; }
     .alti-read { background:var(--card); border:1.5px solid var(--ink); padding:6px 10px; }
     .alti-read b { font-size:18px; }
-    body.night .alti-read, body.photo .alti-read { background:var(--night); }
+    body.night .alti-read { background:var(--night); }
     .bar { padding:14px 16px; } .bar .btn { padding:8px 10px; }
     .bar .email, .bar .long, .mark span { display:none; }
     #kathmandu { padding-top:150px; }
@@ -401,33 +400,6 @@
     .birds, .clouds { display:none; }
     .flight.open .fl-heli { top:16px; left:calc(100% - 120px); transform:translate(-50%,0) scale(.62); }
     .flight.open .fl-cloud { top:var(--ct); } .fl-pin { opacity:1; }
-  }
-
-  /* ---------- cinematic photo scenes ---------- */
-  .scene { position:relative; height:100vh; height:100svh; }
-  .scene-stage { position:relative; height:100%; overflow:hidden; color:#fff; }
-  .scene-media { position:absolute; inset:0; overflow:hidden; will-change:clip-path; }
-  .scene-media img { position:absolute; left:calc(50% - max(100vw, 130vh) / 2); top:0; width:max(100vw, 130vh); max-width:none; height:auto; }
-  .scene-night .scene-media img, .scene-sunrise .scene-media img { left:0; width:100%; height:100%; object-fit:cover; }
-  .scene-sunrise .scene-media img { object-position:50% 45%; }
-  .scene-scrim { position:absolute; inset:0; pointer-events:none; background:linear-gradient(100deg, rgba(10,18,32,.72) 0%, rgba(10,18,32,.35) 45%, rgba(10,18,32,0) 70%), linear-gradient(to top, rgba(10,18,32,.55), rgba(10,18,32,0) 40%); }
-  .scene-copy { position:absolute; left:clamp(110px,11vw,210px); right:clamp(24px,6vw,120px); top:50%; transform:translateY(-50%); }
-  .scene-line { font:400 clamp(40px,5.6vw,92px)/1.02 'Newsreader',serif; font-variation-settings:'opsz' 72; letter-spacing:-.025em; max-width:15ch; text-wrap:balance; text-shadow:0 2px 30px rgba(10,18,32,.45); }
-  .js .scene-line { position:absolute; left:0; top:50%; transform:translateY(-50%); opacity:0; }
-  .scene-cap { position:absolute; left:clamp(110px,11vw,210px); bottom:28px; font:400 14px 'Public Sans',sans-serif; color:rgba(255,255,255,.82); }
-  .scene-sunrise .scene-scrim { background:linear-gradient(to bottom, rgba(10,18,32,.5), rgba(10,18,32,0) 45%), linear-gradient(to top, rgba(10,18,32,.6), rgba(10,18,32,0) 45%); }
-  .scene-sunrise .scene-copy { top:24%; }
-  .scene-sunrise .scene-line { max-width:18ch; }
-  .scene.static .scene-copy { display:grid; gap:24px; }
-  .scene.static .scene-line { position:static; transform:none; opacity:1; font-size:clamp(32px,4vw,60px); }
-  .scene.static { height:auto; min-height:100vh; }
-  .scene.static .scene-stage { min-height:100vh; }
-  @media (max-width:900px) {
-    .scene-copy { left:20px; right:20px; }
-    .scene-line { font-size:clamp(34px,9vw,52px); }
-    .scene-scrim { background:linear-gradient(to top, rgba(10,18,32,.78), rgba(10,18,32,.2) 70%); }
-    .scene-copy, .scene-sunrise .scene-copy { top:auto; bottom:84px; transform:none; height:40%; }
-    .scene-cap { left:20px; right:20px; bottom:20px; }
   }
 </style>
 </head>
@@ -511,19 +483,6 @@
     </div>
     <a class="scrollcue" href="#lukla">Scroll to climb<svg class="ic"><use href="#i-down"/></svg></a>
   </section>
-
-  <div class="scene scene-climb" id="climb" data-kind="climb">
-    <div class="scene-stage">
-      <div class="scene-media"><img src="img/hero/ridge-1100.webp" srcset="img/hero/ridge-1100.webp 1100w, img/hero/ridge-1600.webp 1600w, img/hero/ridge-2400.webp 2400w" sizes="max(100vw, 130vh)" alt="A trekker in a red jacket on a snowy ridge below Machapuchare" loading="lazy" decoding="async"></div>
-      <div class="scene-scrim" aria-hidden="true"></div>
-      <div class="scene-copy">
-        <p class="scene-line">Every project is a climb.</p>
-        <p class="scene-line">Some start as a rough idea. Some start as a slow, broken site.</p>
-        <p class="scene-line">I take them all the way to the top.</p>
-      </div>
-      <p class="scene-cap">Machapuchare from the Mardi Himal trail. Photo by me.</p>
-    </div>
-  </div>
 
   <!-- LUKLA: WORK -->
   <section id="lukla" data-alt="2860" data-name="Lukla" data-label="Work">
@@ -645,18 +604,6 @@
     </div>
   </section>
 
-  <div class="scene scene-night" id="nightfall" data-kind="night">
-    <div class="scene-stage">
-      <div class="scene-media"><img src="img/hero/star-flags-1600.webp" srcset="img/hero/star-flags-1600.webp 1600w, img/hero/star-flags-2400.webp 2400w" sizes="max(100vw, 130vh)" alt="Stars over a bare tree and prayer flags at night" loading="lazy" decoding="async"></div>
-      <div class="scene-scrim" aria-hidden="true"></div>
-      <div class="scene-copy">
-        <p class="scene-line">Night at base camp.</p>
-        <p class="scene-line">When I’m not building websites, I’m out here with a camera.</p>
-      </div>
-      <p class="scene-cap">Prayer flags under the stars. Photo by me.</p>
-    </div>
-  </div>
-
   <!-- BASE CAMP: PHOTOGRAPHY -->
   <section id="basecamp" data-alt="5364" data-name="Base Camp" data-label="Photography">
     <div class="wrap">
@@ -669,19 +616,6 @@
       </div>
     </div>
   </section>
-
-  <div class="scene scene-sunrise" id="sunrise" data-kind="sunrise">
-    <div class="scene-stage">
-      <div class="scene-media"><img src="img/hero/above-clouds-1600.webp" srcset="img/hero/above-clouds-1600.webp 1600w, img/hero/above-clouds-2400.webp 2400w" sizes="max(100vw, 130vh)" alt="Three trekkers watching sunrise above a sea of clouds" loading="lazy" decoding="async"></div>
-      <div class="scene-scrim" aria-hidden="true"></div>
-      <div class="scene-copy">
-        <p class="scene-line">Sunrise at the top.</p>
-        <p class="scene-line">The view is always better when you get there together.</p>
-        <p class="scene-line">Got a project? Let’s plan the route.</p>
-      </div>
-      <p class="scene-cap">Sunrise above the clouds. Photo by me.</p>
-    </div>
-  </div>
 
   <!-- KALA PATTHAR: CONTACT -->
   <section id="kalapatthar" data-alt="5644" data-name="Kala Patthar" data-label="Contact">
@@ -710,7 +644,7 @@
 </main>
 
 <!-- ======= HELICOPTER FLIGHT (aerial view) ======= -->
-<div class="flight" id="flight" role="dialog" aria-modal="true" aria-labelledby="flTitle" hidden>
+<div class="flight" id="flight" data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby="flTitle" hidden>
   <div class="fl-sky" aria-hidden="true">
     <svg class="fl-ridge r1" viewBox="0 0 1440 200" preserveAspectRatio="none"><path d="M0 200 L0 120 L140 70 L260 130 L400 40 L540 120 L680 60 L820 140 L960 50 L1100 120 L1240 70 L1440 110 L1440 200Z"/></svg>
     <svg class="fl-ridge r2" viewBox="0 0 1440 200" preserveAspectRatio="none"><path d="M0 200 L0 150 L180 110 L340 160 L520 100 L700 155 L880 115 L1060 165 L1240 120 L1440 150 L1440 200Z"/></svg>
@@ -771,8 +705,7 @@
 
 <div class="proto-note">Prototype · not the live site</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const NS = 'http://www.w3.org/2000/svg';
@@ -919,6 +852,17 @@ document.getElementById('logos').innerHTML = logos.map(([f,n],i) => `<div class=
   });
 })();
 
+// ---------- smooth scroll (Lenis) ----------
+const lenis = (!reduce && window.Lenis) ? new Lenis({ duration:1.15, easing:t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) }) : null;
+if (lenis) {
+  (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a || a.classList.contains('heli')) return;
+    const id = a.getAttribute('href').slice(1), el = id && document.getElementById(id); if (!el || el.closest('#flight')) return;
+    e.preventDefault(); lenis.scrollTo(el); history.replaceState(null, '', '#' + id);
+  });
+}
+
 // ---------- helicopter flight ----------
 (() => {
   const fl = document.getElementById('flight'), pinsEl = document.getElementById('flPins'), route = document.getElementById('flRoute');
@@ -930,14 +874,14 @@ document.getElementById('logos').innerHTML = logos.map(([f,n],i) => `<div class=
   let lastFocus = null, timer;
   function open(e){
     e && e.preventDefault(); lastFocus = document.activeElement;
-    fl.hidden = false; document.body.classList.add('flying');
+    fl.hidden = false; document.body.classList.add('flying'); lenis && lenis.stop();
     requestAnimationFrame(() => { fl.classList.add('open'); timer = setTimeout(() => { fl.classList.add('ready'); document.getElementById('flLand').focus({preventScroll:true}); }, reduce ? 50 : 1150); });
   }
   function land(target){
     clearTimeout(timer); fl.classList.add('landing');
     setTimeout(() => {
-      fl.classList.remove('open','ready','landing'); fl.hidden = true; document.body.classList.remove('flying');
-      if (target) { const el = document.getElementById(target); document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, el.offsetTop - 20); document.documentElement.style.scrollBehavior = ''; }
+      fl.classList.remove('open','ready','landing'); fl.hidden = true; document.body.classList.remove('flying'); lenis && lenis.start();
+      if (target) { const el = document.getElementById(target); if (lenis) { lenis.scrollTo(el.offsetTop - 20, { immediate:true }); return; } document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, el.offsetTop - 20); document.documentElement.style.scrollBehavior = ''; }
       else lastFocus && lastFocus.focus && lastFocus.focus({preventScroll:true});
     }, reduce ? 50 : 650);
   }
@@ -966,49 +910,6 @@ const mix = (a,b,t) => '#' + hx(a).map((v,i) => Math.round(v+(hx(b)[i]-v)*t).toS
 function atmos(t){ let i = bands.length-2; while (i > 0 && t < bands[i].t) i--; const A = bands[i], B = bands[i+1], k = Math.max(0,Math.min(1,(t-A.t)/(B.t-A.t))), st = document.documentElement.style;
   st.setProperty('--sky-top', mix(A.top,B.top,k)); st.setProperty('--sky-bot', mix(A.bot,B.bot,k)); A.r.forEach((c,j) => st.setProperty(`--r${j}`, mix(c,B.r[j],k)));
   st.setProperty('--cloud', Math.max(0, 1 - Math.max(0, t-.62)/.15).toFixed(2)); }
-
-
-// ---------- cinematic photo scenes (GSAP ScrollTrigger) ----------
-(() => {
-  const scenes = [...document.querySelectorAll('.scene')];
-  if (reduce || !window.gsap || !window.ScrollTrigger) { scenes.forEach(sc => sc.classList.add('static')); return; }
-  gsap.registerPlugin(ScrollTrigger);
-  const PEAK = .34, CLIMBER = .81;
-  scenes.forEach(sc => {
-    const kind = sc.dataset.kind, media = sc.querySelector('.scene-media'), img = media.querySelector('img');
-    const lines = [...sc.querySelectorAll('.scene-line')], cap = sc.querySelector('.scene-cap');
-    const tl = gsap.timeline({ defaults:{ ease:'none' }, scrollTrigger:{
-      trigger:sc, start:'top top', end:() => '+=' + innerHeight * (lines.length * .75 + .6),
-      pin:true, scrub:1, invalidateOnRefresh:true, anticipatePin:1,
-      onUpdate:self => document.body.classList.toggle('photo', self.progress > .1 && self.progress < .995),
-      onLeave:() => document.body.classList.remove('photo'), onLeaveBack:() => document.body.classList.remove('photo') } });
-    // opening: each scene reveals its photo differently
-    if (kind === 'climb') {
-      const imgH = () => img.getBoundingClientRect().height / (gsap.getProperty(img, 'scale') || 1);
-      const low = () => Math.max(innerHeight - imgH(), innerHeight * .66 - imgH() * CLIMBER);
-      const high = () => Math.min(0, innerHeight * .5 - imgH() * PEAK);
-      tl.fromTo(media, { clipPath:'inset(12% 14% 12% 14% round 28px)' }, { clipPath:'inset(0% 0% 0% 0% round 0px)', duration:.18 }, 0)
-        .fromTo(img, { y:() => low(), scale:1.12 }, { y:() => high(), scale:1, duration:1 }, 0);
-    } else if (kind === 'night') {
-      tl.fromTo(media, { clipPath:'circle(9% at 50% 46%)' }, { clipPath:'circle(75% at 50% 46%)', duration:.3, ease:'power1.in' }, 0)
-        .fromTo(img, { scale:1.35 }, { scale:1, duration:1 }, 0);
-    } else {
-      tl.fromTo(media, { clipPath:'inset(46% 0% 46% 0%)' }, { clipPath:'inset(0% 0% 0% 0%)', duration:.24, ease:'power2.out' }, 0)
-        .fromTo(img, { scale:1.25, y:() => innerHeight * .04 }, { scale:1.04, y:() => -innerHeight * .04, duration:1 }, 0);
-    }
-    tl.fromTo(cap, { opacity:0 }, { opacity:1, duration:.08 }, .16);
-    // copy: one line at a time, the last one stays
-    const span = .8 / lines.length;
-    lines.forEach((l, i) => {
-      const at = .16 + i * span;
-      tl.fromTo(l, { opacity:0, y:40 }, { opacity:1, y:0, duration:span * .4, ease:'power2.out' }, at);
-      if (i < lines.length - 1) tl.to(l, { opacity:0, y:-40, duration:span * .3, ease:'power2.in' }, at + span * .65);
-    });
-    // reset the translateY(-50%) we use for vertical centering so GSAP owns the transform
-    lines.forEach(l => gsap.set(l, { yPercent:-50 }));
-  });
-  addEventListener('load', () => ScrollTrigger.refresh());
-})();
 
 // ---------- altimeter ----------
 const secs = [...document.querySelectorAll('main section')], MIN = 1400, MAX = 5644, scale = document.getElementById('altiScale');
